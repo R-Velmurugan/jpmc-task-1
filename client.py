@@ -38,11 +38,13 @@ def getDataPoint(quote):
     price = (bid_price + ask_price)/2
     return stock, bid_price, ask_price, price
 
+denominator = 1
 
 def getRatio(price_a, price_b):
     """ Get ratio of price_a and price_b """
     """ ------------- Update this function ------------- """
-
+    global denominator
+    denominator = price_b
     if price_b == 0:
         return
 
@@ -65,5 +67,9 @@ if __name__ == "__main__":
             stock, bid_price, ask_price, price = getDataPoint(quote)
             prices[stock] = price
             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
-
+            # prices['DEF'] = 0
         print("Ratio %s" % getRatio(prices['ABC'], prices['DEF']))
+
+
+
+
